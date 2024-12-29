@@ -25,7 +25,7 @@ localize.langmap.builtin = {
 }
 localize.bankmap = {
 	['builtin'] = localize.langmap.builtin,
-	['internal'] = localize.langmap.builtin
+	['internal'] = localize.langmap.builtin,
 }
 localize.protected = {
 	['global'] = true,
