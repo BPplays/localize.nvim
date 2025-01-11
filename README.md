@@ -37,15 +37,6 @@ you start by making a bank
 mybank = {
 	['normal<mode>']      = 'ノーマル',
 	['insert<mode>']      = '挿入',
-	['visual<mode>']      = 'ビジュアル',
-	['v-line<mode>']      = 'ビジュアル行',
-	['select<mode>']      = 'セレクト',
-	['s-line<mode>']      = '行指向選択',
-	['s-block<mode>']      = '矩形選択',
-	['replace<mode>']      = '置換',
-	['v-replace<mode>']      = '仮想置換',
-	['command<mode>']      = 'コマンド',
-	['shell<mode>']      = '端末',
 }
 ```
 you can add a bank by using `localize.set_bank('mybankname', mybank)`
