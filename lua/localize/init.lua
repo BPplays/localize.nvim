@@ -87,7 +87,7 @@ function localize.remove_bank(bank)
 	return true
 end
 
----gets a string based
+---gets a string based on language
 ---@param string string
 ---@param lang string
 ---@param bank_or_banks string | table can be one or multiple banks
@@ -130,6 +130,7 @@ function localize.get_string(string, lang, bank_or_banks)
 
 end
 
+---@param str string
 local function get_no_helper_str(str)
     local new_str = ''
     local last_char = ''
@@ -153,6 +154,11 @@ local function get_no_helper_str(str)
     return new_str
 end
 
+
+---gets a string based on language without helper
+---@param string string
+---@param lang string
+---@param bank_or_banks string | table can be one or multiple banks
 function localize.get_string_or_orig_no_helper(string, lang, bank_or_banks)
 	local retstr = localize.get_string(string, lang, bank_or_banks)
 	if type(retstr) == "string" then
@@ -162,7 +168,7 @@ function localize.get_string_or_orig_no_helper(string, lang, bank_or_banks)
 		-- return retstr.gsub(retstr, "<.->", "")
 		return get_no_helper_str(string)
 	end
-	return nil
+	return ''
 end
 
 function localize.setup(opts)
