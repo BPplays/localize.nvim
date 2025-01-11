@@ -57,5 +57,10 @@ you can use `localize.get_string(string, lang, bank_or_banks, search_lower)` to 
 - *lang* - the language to use - defaults to the users language
 - *bank_or_banks* - bank or banks to use - can be one bank name or multiple
 - *search_lower* - search_lower whether or not to also search a lowercase version of the source string
+  <br>
+
+```
+localize.get_string_orig('normal<mode>')
+```
 
 
