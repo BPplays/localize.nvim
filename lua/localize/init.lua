@@ -102,11 +102,20 @@ end
 ---@param string string
 ---@param lang string
 ---@param bank_or_banks string | table can be one or multiple banks
+---@param search_lower boolean
 ---@return string | nil
-function localize.get_string(string, lang, bank_or_banks)
+function localize.get_string(string, lang, bank_or_banks, search_lower)
 	bank_or_banks = bank_or_banks or 'global'
 	lang = lang or localize.options.language.name
 	local banks = {}
+
+	local search_lower_table = { false }
+	if search_lower then
+		search_lower_table = {
+			false,
+			true,
+		}
+	end
 
 	if type(bank_or_banks) == "string" then
 		banks = { bank_or_banks }
@@ -116,25 +125,36 @@ function localize.get_string(string, lang, bank_or_banks)
 
 	for _, bank in ipairs(banks) do
 		if bank == 'global' then
-			for _, bank_map in pairs(localize.bankmap) do
-				local lang_map = bank_map[lang]
-				if lang_map ~= nil then
-					if lang_map[string] ~= nil then
-						return lang_map[string]
+			for _, search_lower_current in ipairs(search_lower_table) do
+				for _, bank_map in pairs(localize.bankmap) do
+					local lang_map = bank_map[lang]
+					if lang_map ~= nil then
+						local mapped = lang_map[string]
+						if search_lower_current then
+							mapped = lang_map[string.lower(string)]
+						end
+						if mapped ~= nil then
+							return mapped
+						end
 					end
-
 				end
-
 			end
+
 		else
 			local bank_map = localize.bankmap[bank]
 			local lang_map = bank_map[lang]
-			if lang_map ~= nil then
-				if lang_map[string] ~= nil then
-					return lang_map[string]
 
+			for _, search_lower_current in ipairs(search_lower_table) do
+				if lang_map ~= nil then
+
+					local mapped = lang_map[string]
+					if search_lower_current then
+						mapped = lang_map[string.lower(string)]
+					end
+					if mapped ~= nil then
+						return mapped
+					end
 				end
-
 			end
 		end
 	end
@@ -173,9 +193,10 @@ end
 ---@param string string
 ---@param lang string
 ---@param bank_or_banks string | table can be one or multiple banks
+---@param search_lower boolean
 ---@return string
-function localize.get_string_or_orig_no_helper(string, lang, bank_or_banks)
-	local retstr = localize.get_string(string, lang, bank_or_banks)
+function localize.get_string_or_orig_no_helper(string, lang, bank_or_banks, search_lower)
+	local retstr = localize.get_string(string, lang, bank_or_banks, search_lower)
 	if type(retstr) == "string" then
 		return retstr
 	elseif retstr == nil then

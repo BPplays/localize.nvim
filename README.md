@@ -22,7 +22,7 @@ banks are groups of localizations by usage usually your plugin's name  <br>
 for example if you have a plugin `statusline` you might make a bank with name 'statusline'
 
 helpers:  <br>
-helpers are optional parts added to the source words inside <> for example 'normal\<mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper,  <br>
+helpers are optional parts added to the source words inside <> 'normal\<mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper,  <br>
 for example 'normal\<mode\>' should not be localized to the language equal of 'normal mode' instead it should be just 'normal', the same kind of 'normal' you would use in saying 'normal mode'
 
 # usage
@@ -34,10 +34,20 @@ local localize = require('localize')
 ### banks
 you start by making a bank
 ```
-mybank = {
+mybank.ja_JP = {
 	['normal<mode>']      = 'ノーマル',
 	['insert<mode>']      = '挿入',
 }
+
+mybank = {
+	['_version'] = 1
+	['ja_JP'] = mybank.ja_JP
+}
 ```
-you can add a bank by using `localize.set_bank('mybankname', mybank)`
+then you can add your bank by using `localize.set_bank('mybankname', mybank)`
+you should also use '_version' to specify what bank version to use, the only version currently is 1
+
+
+### getting localized strings
+
 
