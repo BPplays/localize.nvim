@@ -51,16 +51,24 @@ you should also use '_version' to specify what bank version to use, the only ver
 
 
 ### getting localized strings
-you can use `localize.get_string(string, lang, bank_or_banks, search_lower)` to get a string or nil if it can't find anything  <br>
-`localize.get_string_orig(string, lang, bank_or_banks, search_lower)` will return the original string without the helper if it doesn't find anything
+you can use `localize.get_string(string, bank_or_banks, lang, search_lower)` to get a string or nil if it can't find anything  <br>
+`localize.get_string_orig(string, bank_or_banks, lang, search_lower)` will return the original string without the helper if it doesn't find anything
 - *string* - is the string source
-- *lang* - the language to use - defaults to the users language
 - *bank_or_banks* - bank or banks to use - can be one bank name or multiple
+- *lang* - the language to use - defaults to the users language
 - *search_lower* - search_lower whether or not to also search a lowercase version of the source string
   <br>
 
+the most basic use case would be:
 ```
 localize.get_string_orig('normal<mode>')
 ```
+
+but if you want to specify the bank you can do
+```
+localize.get_string_orig('normal<mode>', 'mybankname')
+```
+there are also reserved bank names ['global', 'builtin', 'internal']
+
 
 

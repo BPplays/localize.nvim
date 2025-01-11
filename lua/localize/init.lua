@@ -99,11 +99,11 @@ end
 
 ---gets a string based on language
 ---@param string string
----@param lang string
 ---@param bank_or_banks string | table can be one or multiple banks
+---@param lang string
 ---@param search_lower boolean
 ---@return string | nil
-function localize.get_string(string, lang, bank_or_banks, search_lower)
+function localize.get_string(string, bank_or_banks,  lang, search_lower)
 	bank_or_banks = bank_or_banks or 'global'
 	lang = lang or localize.options.language.name
 	local banks = {}
@@ -190,12 +190,12 @@ end
 
 ---gets a string based on language without helper
 ---@param string string
----@param lang string
 ---@param bank_or_banks string | table can be one or multiple banks
+---@param lang string
 ---@param search_lower boolean
 ---@return string
-function localize.get_string_orig(string, lang, bank_or_banks, search_lower)
-	local retstr = localize.get_string(string, lang, bank_or_banks, search_lower)
+function localize.get_string_orig(string, bank_or_banks, lang, search_lower)
+	local retstr = localize.get_string(string, bank_or_banks, lang, search_lower)
 	if type(retstr) == "string" then
 		return retstr
 	elseif retstr == nil then
