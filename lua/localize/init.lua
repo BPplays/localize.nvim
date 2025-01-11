@@ -1,8 +1,40 @@
 local localize = {}
 localize.langmap = {}
 localize.langmap.builtin = {}
+
+
+
+
+local Lang = {}
+Lang.__index = Lang
+
+function Lang.new(name, spec)
+    return setmetatable({ name = name or "", spec = spec or "" }, Lang)
+end
+
+local function str_split(str, sep)
+
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(str, "([^"..sep.."]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
+
+local function parse_lang(lang)
+	local spl = str_split(lang, ".")
+	return Lang.new(spl[1], spl[2])
+
+end
+
+
 localize.options = {
-  language = "en_US"
+  -- language = "en_US"
+  -- language = regex_alias(localize.langmap.aliases_regex, vim.fn.getenv("LANG"))
+  language = parse_lang(vim.fn.getenv("LANG"))
 }
 
 localize.langmap.builtin.ja_JP = {
@@ -21,18 +53,22 @@ localize.langmap.builtin.ja_JP = {
 
 localize.langmap.builtin = {
 	['ja_JP']      = localize.langmap.builtin.ja_JP,
-	['ja_JP.utf8']      = localize.langmap.builtin.ja_JP,
 }
+
 localize.bankmap = {
 	['builtin'] = localize.langmap.builtin,
 	['internal'] = localize.langmap.builtin,
 }
+
 localize.protected = {
 	['global'] = true,
 	['builtin'] = true,
 	['internal'] = true,
 }
 
+---sets a bank to a value returns true or false if it worked
+---@param bank string
+---@param bank_value table
 function localize.set_bank(bank, bank_value)
 	if localize.protected[bank] then
 		return false
@@ -41,6 +77,8 @@ function localize.set_bank(bank, bank_value)
 	return true
 end
 
+---removes a bank
+---@param bank string
 function localize.remove_bank(bank)
 	if localize.protected[bank] then
 		return false
@@ -49,9 +87,13 @@ function localize.remove_bank(bank)
 	return true
 end
 
+---gets a string based
+---@param string string
+---@param lang string
+---@param bank_or_banks string | table can be one or multiple banks
 function localize.get_string(string, lang, bank_or_banks)
 	bank_or_banks = bank_or_banks or 'global'
-	lang = lang or localize.options.language
+	lang = lang or localize.options.language.name
 	local banks = {}
 
 	if type(bank_or_banks) == "string" then
