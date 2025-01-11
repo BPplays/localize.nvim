@@ -22,7 +22,7 @@ banks are groups of localizations by usage usually your plugin's name
 for example if you have a plugin `statusline` you might make a bank with name 'statusline'
 
 helpers:
-helpers are optional parts added to the source words inside <> for example 'normal\<mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper, < br / >
+helpers are optional parts added to the source words inside <> for example 'normal\<mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper,
 for example 'normal\<mode\>' should not be localized to the language equal of 'normal mode' instead it should be just 'normal', the same kind of 'normal' you would use in saying normal mode
 
 # usage
