@@ -188,7 +188,7 @@ local function get_no_helper_str(str)
 end
 
 
----gets a string based on language without helper
+---gets a string based on language or returns input string without helper
 ---@param string string
 ---@param bank_or_banks string | table can be one or multiple banks
 ---@param lang string
