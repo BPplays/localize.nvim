@@ -22,7 +22,7 @@ banks are groups of localizations by usage usually your plugin's name
 for example if you have a plugin `statusline` you might make a bank with name 'statusline'
 
 helpers:
-helpers are optional parts added to the source works inside <> for example 'normal`<mode`>'
+helpers are optional parts added to the source works inside <> for example 'normal\<mode\>'
 
 # usage
 start by using
