@@ -194,7 +194,7 @@ end
 ---@param bank_or_banks string | table can be one or multiple banks
 ---@param search_lower boolean
 ---@return string
-function localize.get_string_or_orig_no_helper(string, lang, bank_or_banks, search_lower)
+function localize.get_string_orig(string, lang, bank_or_banks, search_lower)
 	local retstr = localize.get_string(string, lang, bank_or_banks, search_lower)
 	if type(retstr) == "string" then
 		return retstr
@@ -203,6 +203,9 @@ function localize.get_string_or_orig_no_helper(string, lang, bank_or_banks, sear
 	end
 	return ''
 end
+
+
+localize.get_string_or_orig_no_helper = localize.get_string_orig
 
 function localize.setup(opts)
 	localize.options = vim.tbl_deep_extend("force", localize.options, opts or {})

@@ -51,5 +51,11 @@ you should also use '_version' to specify what bank version to use, the only ver
 
 
 ### getting localized strings
+you can use `localize.get_string(string, lang, bank_or_banks, search_lower)` to get a string or nil of it can't find anything  <br>
+- string is the string source
+- the language to use - defaults to the users language
+- bank or banks to use - can be one bank name or multiple
+- search_lower whether or not to also search a lowercase version of the source string
 
+`localize.get_string_orig(string, lang, bank_or_banks, search_lower)` will return the original string without the helper if it doesn't find anything
 
