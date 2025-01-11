@@ -38,8 +38,6 @@ end
 
 ---@type table
 localize.options = {
-  -- language = "en_US"
-  -- language = regex_alias(localize.langmap.aliases_regex, vim.fn.getenv("LANG"))
   language = parse_lang(vim.fn.getenv("LANG"))
 }
 
