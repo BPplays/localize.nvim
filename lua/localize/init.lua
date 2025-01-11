@@ -43,17 +43,6 @@ localize.options = {
   language = parse_lang(vim.fn.getenv("LANG"))
 }
 
-local mybank = {}
-mybank.ja_JP = {
-	['normal<mode>']      = 'ノーマル',
-	['insert<mode>']      = '挿入',
-}
-
-mybank = {
-	['_version'] = 1
-	['ja_JP'] = mybank.ja_JP
-}
-
 ---@type table
 localize.langmap.builtin.ja_JP = {
 	['normal<mode>']      = 'ノーマル',
