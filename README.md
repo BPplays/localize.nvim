@@ -18,7 +18,11 @@ this plugin is a localization library
 
 # concepts
 banks:
-    banks
+banks are groups of localizations by usage usually your plugin's name
+for example if you have a plugin `statusline` you might make a bank with name 'statusline'
+
+helpers:
+helpers are optional parts added to the source works inside <> for example 'normal`<mode`>'
 
 # usage
 start by using
@@ -27,4 +31,21 @@ local localize = require('localize')
 ```
 
 ### banks
-you can add a bank by using `localize.set_bank`
+you start by making a bank
+```
+mybank = {
+	['normal<mode>']      = 'ノーマル',
+	['insert<mode>']      = '挿入',
+	['visual<mode>']      = 'ビジュアル',
+	['v-line<mode>']      = 'ビジュアル行',
+	['select<mode>']      = 'セレクト',
+	['s-line<mode>']      = '行指向選択',
+	['s-block<mode>']      = '矩形選択',
+	['replace<mode>']      = '置換',
+	['v-replace<mode>']      = '仮想置換',
+	['command<mode>']      = 'コマンド',
+	['shell<mode>']      = '端末',
+}
+```
+you can add a bank by using `localize.set_bank('mybankname', mybank)`
+
