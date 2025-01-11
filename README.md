@@ -17,7 +17,7 @@ this plugin is a localization library
 ```
 
 # concepts
-- banks:
+banks:
     banks
 
 # usage
