@@ -51,7 +51,7 @@ you should also use '_version' to specify what bank version to use, the only ver
 
 
 ### getting localized strings
-you can use `localize.get_string(string, lang, bank_or_banks, search_lower)` to get a string or nil of it can't find anything  <br>
+you can use `localize.get_string(string, lang, bank_or_banks, search_lower)` to get a string or nil if it can't find anything
 - string is the string source
 - the language to use - defaults to the users language
 - bank or banks to use - can be one bank name or multiple
