@@ -23,7 +23,7 @@ for example if you have a plugin `statusline` you might make a bank with name 's
 
 helpers:  <br>
 helpers are optional parts added to the source words inside <> for example 'normal\<mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper,  <br>
-for example 'normal\<mode\>' should not be localized to the language equal of 'normal mode' instead it should be just 'normal', the same kind of 'normal' you would use in saying normal mode
+for example 'normal\<mode\>' should not be localized to the language equal of 'normal mode' instead it should be just 'normal', the same kind of 'normal' you would use in saying 'normal mode'
 
 # usage
 start by using
