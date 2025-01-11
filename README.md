@@ -35,6 +35,7 @@ local localize = require('localize')
 you start by making a bank
 ```
 local mybank = {}
+
 mybank.ja_JP = {
 	['normal<mode>']      = 'ノーマル',
 	['insert<mode>']      = '挿入',
