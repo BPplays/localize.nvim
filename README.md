@@ -1,6 +1,4 @@
-<p align="center">
-    <h1>localize.nvim</h1>
-</p>
+<h1 align="center">localize.nvim</h1>
 this plugin is a localization library
 
 ## install
