@@ -18,9 +18,10 @@ this plugin is a localization library
 
 
 # usage
-start by
+start by using
 ```
 local localize = require('localize')
 ```
-## banks
-you can add a bank by
+
+### banks
+you can add a bank by using `localize.set_bank`
