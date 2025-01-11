@@ -2,6 +2,7 @@ local localize = {}
 localize.langmap = {}
 localize.langmap.builtin = {}
 
+local current_version
 
 
 
@@ -40,6 +41,17 @@ localize.options = {
   -- language = "en_US"
   -- language = regex_alias(localize.langmap.aliases_regex, vim.fn.getenv("LANG"))
   language = parse_lang(vim.fn.getenv("LANG"))
+}
+
+local mybank = {}
+mybank.ja_JP = {
+	['normal<mode>']      = 'ノーマル',
+	['insert<mode>']      = '挿入',
+}
+
+mybank = {
+	['_version'] = 1
+	['ja_JP'] = mybank.ja_JP
 }
 
 ---@type table
