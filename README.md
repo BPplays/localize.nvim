@@ -50,7 +50,7 @@ then you can add your bank by using
 ```lua
 localize.set_bank('mybankname', mybank)
 ```
-note: this function can throw an error
+note: this function can throw an error  <br>
 you must also use '_version' to specify what bank version to use, the only version currently is 1
 
 
