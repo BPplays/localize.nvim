@@ -18,8 +18,8 @@ this plugin is a localization library
 
 # concepts
 banks:  <br>
-banks are groups of localizations by usage usually your plugin's name  <br>
-for example if you have a plugin `my_cool_statusline` you might make a bank with name 'my_cool_statusline'
+banks are groups of localizations by usage usually your plugin's name and who's making it  <br>
+for example if you have a plugin `my_cool_statusline` you might make a bank with name 'me/my_cool_statusline'
 
 helpers:  <br>
 helpers are optional parts added to the source words inside <> 'normal\<vim mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper,  <br>
