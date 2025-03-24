@@ -75,31 +75,30 @@ localize.protected = {
 }
 
 ---Sets a bank to a value
+---*Throws* if bank is protected, or no '_version' is set
 ---@param bank string
 ---@param bank_value table
----@return string | nil error
 function localize.set_bank(bank, bank_value)
 	if localize.protected[bank] then
-		return "can't change protected bank"
+		error("can't change protected bank")
 	end
 
 	if bank_value['_version'] == nil then
-		return "bank has no version"
+		error("bank has no version")
 	end
 	if type(bank_value['_version']) ~= "number" then
-		return "bank version wrong type"
+		error("bank version wrong type")
 	end
 
 	localize.bankmap[bank] = bank_value
-	return nil
 end
 
 ---Removes a bank
+---*Throws* if bank is protected
 ---@param bank string
----@return string | nil error
 function localize.remove_bank(bank)
 	if localize.protected[bank] then
-		return "can't remove protected bank"
+		error("can't remove protected bank")
 	end
 	localize.bankmap[bank] = nil
 	return nil

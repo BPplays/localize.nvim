@@ -19,11 +19,11 @@ this plugin is a localization library
 # concepts
 banks:  <br>
 banks are groups of localizations by usage usually your plugin's name  <br>
-for example if you have a plugin `statusline` you might make a bank with name 'statusline'
+for example if you have a plugin `my_cool_statusline` you might make a bank with name 'my_cool_statusline'
 
 helpers:  <br>
-helpers are optional parts added to the source words inside <> 'normal\<mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper,  <br>
-for example 'normal\<mode\>' should not be localized to the language equal of 'normal mode' instead it should be just 'normal', the same kind of 'normal' you would use in saying 'normal mode'
+helpers are optional parts added to the source words inside <> 'normal\<vim mode\>' would mean normal as in normal mode but the localized string should reflect the shortening without the helper,  <br>
+for example 'normal\<vim mode\>' should *not* be localized to the language equal of 'normal mode' instead it should be just 'normal', the same kind of 'normal' you would use in saying 'normal mode'
 
 # usage
 start by using
@@ -37,8 +37,8 @@ you start by making a bank
 local mybank = {}
 
 mybank.ja_JP = {
-	['normal<mode>']      = 'ノーマル',
-	['insert<mode>']      = '挿入',
+	['normal<vim mode>']      = 'ノーマル',
+	['insert<vim mode>']      = '挿入',
 }
 
 mybank = {
@@ -46,11 +46,12 @@ mybank = {
 	['ja_JP'] = mybank.ja_JP,
 }
 ```
-then you can add your bank by using `localize.set_bank('mybankname', mybank)`
+then you can add your bank by using
 ```lua
-local err = localize.set_bank('mybankname', mybank)
+localize.set_bank('mybankname', mybank)
 ```
-you should also use '_version' to specify what bank version to use, the only version currently is 1
+note: this function can throw an error
+you must also use '_version' to specify what bank version to use, the only version currently is 1
 
 
 ### getting localized strings
