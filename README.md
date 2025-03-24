@@ -55,11 +55,10 @@ you must also use '_version' to specify what bank version to use, the only versi
 
 
 ### getting localized strings
-you can use
+you can use this to get a string or nil if it can't find anything  <br>
 ```lua
 localize.get_string(string, bank_or_banks, lang, search_lower)
 ```
-to get a string or nil if it can't find anything  <br>
 
 this will return the original string without the helper if it doesn't find anything  <br>
 ```lua
