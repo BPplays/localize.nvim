@@ -55,8 +55,17 @@ you must also use '_version' to specify what bank version to use, the only versi
 
 
 ### getting localized strings
-you can use `localize.get_string(string, bank_or_banks, lang, search_lower)` to get a string or nil if it can't find anything  <br>
-`localize.get_string_orig(string, bank_or_banks, lang, search_lower)` will return the original string without the helper if it doesn't find anything
+you can use
+```lua
+localize.get_string(string, bank_or_banks, lang, search_lower)
+```
+to get a string or nil if it can't find anything  <br>
+
+this will return the original string without the helper if it doesn't find anything  <br>
+```lua
+localize.get_string_orig(string, bank_or_banks, lang, search_lower)
+```
+
 - *string* - is the string source
 - *bank_or_banks* - bank or banks to use - can be one bank name or multiple
 - *lang* - the language to use - defaults to the users language
