@@ -27,13 +27,13 @@ for example 'normal\<mode\>' should not be localized to the language equal of 'n
 
 # usage
 start by using
-```
+```lua
 local localize = require('localize')
 ```
 
 ### banks
 you start by making a bank
-```
+```lua
 local mybank = {}
 
 mybank.ja_JP = {
@@ -42,11 +42,14 @@ mybank.ja_JP = {
 }
 
 mybank = {
-	['_version'] = 1
-	['ja_JP'] = mybank.ja_JP
+	['_version'] = 1,
+	['ja_JP'] = mybank.ja_JP,
 }
 ```
 then you can add your bank by using `localize.set_bank('mybankname', mybank)`
+```lua
+local err = localize.set_bank('mybankname', mybank)
+```
 you should also use '_version' to specify what bank version to use, the only version currently is 1
 
 

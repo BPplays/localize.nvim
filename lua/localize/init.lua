@@ -43,17 +43,17 @@ localize.options = {
 
 ---@type table
 localize.langmap.builtin.ja_JP = {
-	['normal<mode>']      = 'ノーマル',
-	['insert<mode>']      = '挿入',
-	['visual<mode>']      = 'ビジュアル',
-	['v-line<mode>']      = 'ビジュアル行',
-	['select<mode>']      = 'セレクト',
-	['s-line<mode>']      = '行指向選択',
-	['s-block<mode>']      = '矩形選択',
-	['replace<mode>']      = '置換',
-	['v-replace<mode>']      = '仮想置換',
-	['command<mode>']      = 'コマンド',
-	['shell<mode>']      = '端末',
+	['normal<vim mode>']      = 'ノーマル',
+	['insert<vim mode>']      = '挿入',
+	['visual<vim mode>']      = 'ビジュアル',
+	['v-line<vim mode>']      = 'ビジュアル行',
+	['select<vim mode>']      = 'セレクト',
+	['s-line<vim mode>']      = '行指向選択',
+	['s-block<vim mode>']      = '矩形選択',
+	['replace<vim mode>']      = '置換',
+	['v-replace<vim mode>']      = '仮想置換',
+	['command<vim mode>']      = 'コマンド',
+	['shell<vim mode>']      = '端末',
 }
 
 ---@type table
@@ -74,27 +74,35 @@ localize.protected = {
 	['internal'] = true,
 }
 
----sets a bank to a value, returns true or false if it worked
+---Sets a bank to a value
 ---@param bank string
 ---@param bank_value table
----@return boolean
+---@return string | nil error
 function localize.set_bank(bank, bank_value)
 	if localize.protected[bank] then
-		return false
+		return "can't change protected bank"
 	end
+
+	if bank_value['_version'] == nil then
+		return "bank has no version"
+	end
+	if type(bank_value['_version']) ~= "number" then
+		return "bank version wrong type"
+	end
+
 	localize.bankmap[bank] = bank_value
-	return true
+	return nil
 end
 
----removes a bank
+---Removes a bank
 ---@param bank string
----@return boolean
+---@return string | nil error
 function localize.remove_bank(bank)
 	if localize.protected[bank] then
-		return false
+		return "can't remove protected bank"
 	end
 	localize.bankmap[bank] = nil
-	return true
+	return nil
 end
 
 ---gets a string based on language
