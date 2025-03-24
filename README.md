@@ -73,12 +73,12 @@ localize.get_string_orig(string, bank_or_banks, lang, search_lower)
 
 the most basic use case would be:
 ```
-localize.get_string_orig('normal<mode>')
+localize.get_string_orig('normal<vim mode>')
 ```
 
 but if you want to specify the bank you can do
 ```
-localize.get_string_orig('normal<mode>', 'mybankname')
+localize.get_string_orig('normal<vim mode>', 'mybankname')
 ```
 there are also reserved bank names ['global', 'builtin', 'internal']
 
